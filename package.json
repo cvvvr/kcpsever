@@ -1,0 +1,15 @@
+{
+  "name": "kcpNodeServer",
+  "version": "1.0.0",
+  "devDependencies": {
+    "jsonwebtoken": "^8.5.1"
+  },
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "express": "^4.17.2",
+    "mongoose": "^6.1.5"
+  },
+  "scripts": {
+    "server": "node server/express/express.js"
+  }
+}
