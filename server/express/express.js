@@ -11,20 +11,15 @@ let nowUser = {};
 // 首页
 app.get('/',async  (req, res) => {
   res.send('hello express!')
-  user = await User.create({
-    username: '123',
-    password: '345'
-  })
-  console.log('user',user);
 })
 
 // 注册
 app.post('/register', async (req, res) => {
-  const user = await User.findOne({ username: req.body.params.username })
-  console.log(user);
+  let user = await User.findOne({ username: req.body.params.username })
   if ( user === null ) {
     user = await User.create({
       username: req.body.params.username,
+      useremail: req.body.params.useremail,
       password: req.body.params.password
     })
     return res.send({
@@ -39,7 +34,9 @@ app.post('/register', async (req, res) => {
 
 // 登陆
 app.post('/login', async (req, res) => {
-  const user = await User.findOne({ username: req.body.params.username })
+  console.log('params',req.body.params)
+  const user = await User.findOne({ useremail: req.body.params.useremail })
+  console.log('user',user)
   if ( user !== null ) {
     if(bcryptjs.compareSync(req.body.params.password, user.password)){
       nowUser = user;

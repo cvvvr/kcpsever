@@ -1,16 +1,13 @@
 const mongoose = require('mongoose');
 const bcryptjs = require('bcryptjs');
 
-// const TEST = 'mongodb://localhost:27017/test';
-const DOCKER = 'mongodb://database:27017/test';
+const TEST = 'mongodb://139.186.128.205:27017/test';
 
-//测试环境
-// mongoose.connect(TEST, {});
-//docker环境
-mongoose.connect(DOCKER, {});
+mongoose.connect(TEST, {});
 
 const UserSchema = new mongoose.Schema({
   username: { type: String },
+  useremail: { type:String },
   password: {
     type: String,
     set(val){
